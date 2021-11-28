@@ -34,6 +34,14 @@ class Main {
         document.getElementById("btnRight").addEventListener('click', () => {this.forward()});
         document.getElementById("btnLeft").addEventListener("click", () => {this.backward()});
 
+        window.addEventListener("keydown", event => {
+            switch(event.key) {
+                case "ArrowLeft": this.backward(); break;
+                case "ArrowRight": this.forward(); break;
+           }
+        }); //to go backward and forward on slider with keyboard
+  
+
         this.isMenuOpened = false;
 
         document.getElementById('burgerButton').addEventListener("click", () => {
