@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --darkGray: hsl(0, 0%, 63%);
+    --veryDarkGray: hsl(0, 0%, 27%);
+    font-family: 'Spartan', sans-serif;
+    font-size: 12px;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+}
+
+#slider {
+    position: relative;
+    height: 66%;
+}
+
+nav {
+    width: 400px;
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    color: white;
+    text-transform: lowercase;
+    font-size: smaller;
+}
+#menuItems {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    margin-left: 10%;
+    list-style-type: none;
+}
+#menuItems li {
+    position: relative;
+}
+#menuItems li a {
+    text-decoration: none;
+    color: white;
+}
+#menuItems li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    width: 70%;
+    height: 1px;
+    background: transparent;
+}
+#menuItems li a:hover::after {
+    background: white;
+}
+
+.buttons {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 28.5%;
+    display: flex;
+}
+
+button {
+    width: 50%;
+    border: none;
+    background-color: black;
+    cursor: pointer;
+}
+button:hover {
+    background-color: var(--veryDarkGray);
+}
+button img {
+    height: 85%;
+    padding: 25%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    background-color: white;
+    opacity: 0;
+}
+.visible {
+    opacity: 1;
+}
+
+.slide .hero {
+    height: 100%;
+    min-width: 58%;
+    object-fit: cover;
+}
+
+.text {
+    padding: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.text h2 {
+    font-size: x-large;
+    font-weight: 700;
+}
+
+p {
+    margin: 6% 0;
+    color: var(--darkGray);
+    line-height: 1.5;
+    font-size: smaller;
+}
+
+.text a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: black;
+    font-weight: 600;
+    font-size: xx-small;
+}
+.text a:hover {
+    color: var(--darkGray);
+}
+.text a img {
+    margin-left: 20px;
+}
+
+#info {
+    display: flex;
+    height: 34%;
+}
+#info img {
+    width: 30vw;
+    object-fit: cover;
+}
+.infoText {
+    padding: 4%;
+}
+h3 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: xx-small;
+    font-weight: 700;
+}
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+
+/* SMALL SCREENS */
+@media(max-width: 760px) {
+
+    body {
+        height: auto;
+    }
+    #layerForSmallScreen {
+        display: none;
+        content: '';
+        width: 100vw;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        z-index: 4;
+    }
+    #slider {
+        height: auto;   
+    }
+    nav {
+        width: 100%;
+        padding: 8% 0;
+        justify-content: center;
+    }
+    #burgerButton {
+        position: absolute;
+        left: 20px;
+    }
+    #burger {
+        width:20px;
+        height:2px;
+        background:white;
+        display:inline-block;
+        position:relative;
+    }
+    #burger::before,
+    #burger::after {
+        content:'';
+        width:20px;
+        height:2px;
+        background:white;
+        display:inline-block;
+        position:absolute;
+        transform-origin: center;
+        transition: all 0.3s ease;
+    }
+    #burger::before {
+        top:-7px;
+    }
+    #burger::after {
+        top:7px;
+    }
+    #burger.open {
+        background:transparent;
+      }
+    #burger.open::before {
+        transform: rotate(45deg); 
+        top:0;
+        background: lightgray;
+      }
+    #burger.open::after {
+        transform: rotate(-45deg);
+        top:0;
+        background: lightgray;
+      }
+    #menuItems {
+        display: none;
+    }
+    .slide {
+        flex-direction: column;
+        position: relative;
+    }
+    .buttons {
+        left: initial;
+        right: 0;
+        bottom: 100%;
+    }
+    #info {
+        flex-direction: column;
+    }
+    #info img {
+        width: 100%;
+    }
+
+
+}
